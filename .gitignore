@@ -36,3 +36,4 @@
 *.depend
 *.o
 *.o
+main.o
