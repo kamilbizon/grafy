@@ -18,7 +18,7 @@ public:
 
 
 private:
-    std::vector < std::vector < int > > matrix;
+    std::vector < std::vector < int > > matrix; // macierz przechowuje w wektorze wektorow intow
 };
 
 #endif // MATRIX_INC_H

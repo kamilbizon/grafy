@@ -17,7 +17,7 @@ public:
     std::vector < std::vector < int > > get_matrix() const;
 
 private:
-    std::vector < std::vector < int > > matrix;
+    std::vector < std::vector < int > > matrix; // macierz przechowuje w wektorze wektorow intow
 };
 
 #endif // MATRIX_ADJ_H

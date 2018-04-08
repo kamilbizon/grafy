@@ -10,22 +10,22 @@ using std::fstream;
 Matrix_adj::Matrix_adj()
 {}
 
-Matrix_adj::Matrix_adj(Adjency_list &list)
+Matrix_adj::Matrix_adj(Adjency_list &list)  // konwersja z listy sasiedztwa
 {
-    vector < vector < int > > temp_list = list.get_list();
+    vector < vector < int > > temp_list = list.get_list();  // pobieram tablice przedstawiajace liste
 
-    for(int row = 0; row < (int)temp_list.size(); row++)
+    for(int row = 0; row < (int)temp_list.size(); row++)   // tworze macierz nxn (n - liczba wierzcholkow)
     {
-        matrix.push_back(vector < int >());
+        matrix.push_back(vector < int >()); // n - vectorow
         for(int col = 0; col < (int)temp_list.size(); col++)
-            matrix[row].push_back(0);
+            matrix[row].push_back(0);   // n - intow w kazdym wektorze, ustawiam na zero
     }
 
 
     for(int row = 0; row < (int)temp_list.size(); row++)
         for(int col = 0; col < (int)temp_list[row].size(); col++)
         {
-            matrix[row][temp_list[row][col]] = 1;
+            matrix[row][temp_list[row][col]] = 1;   // sprawdzam sasiadow dla kazdego wierzcholka i ustawiam go w macierzy
         }
 }
 

@@ -20,7 +20,7 @@ public:
     std::vector < std::vector < int > > get_list() const;
 
 private:
-    std::vector < std::vector < int > > list;
+    std::vector < std::vector < int > > list;   // liste przechowuje w wektorze wektorow intow
 };
 
 #endif // ADJENCY_LIST_H
