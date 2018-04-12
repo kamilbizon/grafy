@@ -87,6 +87,28 @@ void Matrix_inc::print_matrix_inc()
     cout << '\n';
 }
 
+void Matrix_inc::save_to_file_matrix_inc()
+{
+    fstream file;
+    file.open("matrix_inc.txt", std::ios::out);
+    file << "I\n";
+    file << "  \t";
+    for(int col = 0; col < (int)matrix[0].size(); col++)
+        file << "L" << col << "\t";
+    for(int col = 0; col < (int)matrix.size(); col++)
+    {
+        file << "\n";
+        file << col << ":\t";
+        for(int row = 0; row < (int)matrix[col].size(); row++)
+        {
+            file << matrix[col][row];
+            if(row < (int)matrix[col].size() - 1)
+                file << "\t";
+        }
+    }
+}
+
+
 vector < vector < int > > Matrix_inc::get_matrix() const
 {
     return matrix;

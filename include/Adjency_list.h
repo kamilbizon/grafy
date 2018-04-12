@@ -16,6 +16,8 @@ public:
     Adjency_list(Matrix_adj &matrix);
     Adjency_list(Matrix_inc &matrix);
     void read_list(std::fstream &file);
+    void generate(int n, int l);
+    void generate(int n, float probability);
     void print_list();
     std::vector < std::vector < int > > get_list() const;
 

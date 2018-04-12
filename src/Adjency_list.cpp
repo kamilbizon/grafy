@@ -1,6 +1,10 @@
 #include "Adjency_list.h"
 
 #include <iostream>
+#include <random>
+#include <time.h>
+#include <algorithm>
+#include <limits>
 
 using std::cout;
 using std::vector;
@@ -50,6 +54,7 @@ Adjency_list::Adjency_list(Matrix_inc &matrix)  // kowersja z macierzy incydencj
 
 void Adjency_list::read_list(fstream &file)
 {
+    list.clear();
     char find_endline;
     int temp, n = 0;
 
@@ -69,6 +74,60 @@ void Adjency_list::read_list(fstream &file)
         }
 
         n++;
+    }
+}
+
+void Adjency_list::generate(int n, int l)   // tworzy liste sasiedztwa na podstawie paramatrow n - liczba wierzcholkow, l -liczba krawedzi
+{
+    list.clear();   // gdyby lista juz istniala czyscimy ja
+    if(l > (n*(n-1))/2)     // liczba krawedzi nie morze byc wieksza od tej wartosci
+        l = (n*(n-1))/2;    // jesli jest zmniejszamy ja do wartosci maksymalnej
+
+    for(int i = 0; i < n; ++i)
+        list.push_back(vector < int >());
+
+
+    std::srand(time(NULL));
+    for(int i = 0; i < l;)
+    {
+        int first_vertice = std::rand() % n;    // losujemy pierwsza krawedz
+        int second_vertice;
+        do
+            second_vertice = std::rand() % n;
+        while(second_vertice == first_vertice); // losujemy druga krawedz tak zeby nie byla pierwsza
+
+        if(std::find(list[first_vertice].begin(), list[first_vertice].end(), second_vertice) == list[first_vertice].end())
+        {                                                                   // jezeli taka krawedz jeszcze nie istnieje dodajemy ja
+            list[first_vertice].push_back(second_vertice);
+            list[second_vertice].push_back(first_vertice);
+            ++i;    // indeks zwiekszamy dopiero po dodaniu krawedzi zeby zadnej nie opuscic
+        }
+    }
+}
+
+void Adjency_list::generate(int n, float probability)
+{
+    list.clear();   // gdyby lista juz istniala czyscimy ja
+    if(probability > 1)     // sprowadzamy prawdopodobienstwo do przedzialu <0; 1>
+        probability = 1;
+    else if(probability < 0)
+        probability = 0;
+
+    for(int i = 0; i < n; ++i)
+        list.push_back(vector < int >());
+
+    std::srand(time(NULL));
+    {
+        for(int i = 0; i < n; ++i)
+            for(int j = i+1; j < n; j++)    // dla kazdej krawedzi losujemy czy krawedzie o numerach wyzszych od niej sa z nia polaczone
+            {
+                float sample = static_cast<float>(std::rand()) / static_cast<float>(RAND_MAX);
+                if(sample < probability)
+                {
+                    list[i].push_back(j);
+                    list[j].push_back(i);
+                }
+            }
     }
 }
 

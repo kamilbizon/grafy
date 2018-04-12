@@ -14,7 +14,7 @@ int main(void)
 {
     fstream file;
 
-    file.open("graph1.txt", std::ios::in); // odczytuje graf z pliku, format zapisu grafu podany
+    file.open("matrix_inc.txt", std::ios::in); // odczytuje graf z pliku, format zapisu grafu podany
 
     char flag;
     file >> flag;   // wczytuje pierwsza litere, ktora oznacza sposob prezentacji grafu
@@ -55,8 +55,14 @@ int main(void)
             break;
         }
     default:
-        cout << "cos nie dziala :(";
+        cout << "cos nie dziala :(\n";
     }
+
+    Adjency_list list;
+    list.generate(6, 6);
+    Matrix_inc mat(list);
+    mat.print_matrix_inc();
+    mat.save_to_file_matrix_inc();
 
     file.close();
 }

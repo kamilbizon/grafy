@@ -14,6 +14,7 @@ public:
     Matrix_inc(Adjency_list &list);
     void read_matrix(std::fstream &file);
     void print_matrix_inc();
+    void save_to_file_matrix_inc();
     std::vector < std::vector < int > > get_matrix() const;
 
 
