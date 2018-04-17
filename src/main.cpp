@@ -72,9 +72,13 @@ int main(void)
                 default:
                     cout << "cos nie dziala :(\n";
                 }
-
                 cout << std::endl;
                 file.close();
+            }
+            else
+            {
+                cout << "Ten plik nie istnieje\n";
+                exit (EXIT_FAILURE);
             }
             break;
         }
@@ -130,13 +134,13 @@ int main(void)
                 break;
             }
             default:
-                cout << "Cos zrobiles zle, sproboj jeszcze raz";
+                cout << "Cos zrobiles zle, sproboj jeszcze raz\n";
                 exit (EXIT_FAILURE);
             }
             break;
         }
     default:
-        cout << "Cos zrobiles zle, sproboj jeszcze raz";
+        cout << "Cos zrobiles zle, sproboj jeszcze raz\n";
         exit (EXIT_FAILURE);
     }
 }
