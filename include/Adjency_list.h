@@ -19,6 +19,7 @@ public:
     void generate(int n, int l);
     void generate(int n, float probability);
     void print_list();
+    void save_to_file_adj_list();
     std::vector < std::vector < int > > get_list() const;
 
 private:

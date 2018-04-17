@@ -57,12 +57,18 @@ int main(void)
     default:
         cout << "cos nie dziala :(\n";
     }
+    cout << std::endl;
 
-    Adjency_list list;
-    list.generate(6, 6);
-    Matrix_inc mat(list);
-    mat.print_matrix_inc();
-    mat.save_to_file_matrix_inc();
+    Adjency_list list_a;
+    list_a.generate(6, 6);
+    list_a.print_list();
+    list_a.save_to_file_adj_list();
+    Matrix_inc mat_i(list_a);
+    mat_i.print_matrix_inc();
+    mat_i.save_to_file_matrix_inc();
+    Matrix_adj mat_a(list_a);
+    mat_a.print_matrix_adj();
+    mat_a.save_to_file_matrix_adj();
 
     file.close();
 }

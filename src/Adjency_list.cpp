@@ -142,6 +142,24 @@ void Adjency_list::print_list(void)
         }
         cout << "\n";
     }
+    cout << "\n";
+}
+
+void Adjency_list::save_to_file_adj_list()
+{
+    fstream file;
+    file.open("adj_list.txt", std::ios::out);
+    file << "L";
+
+    for(int col = 0; col < (int)list.size(); col++)
+    {
+        file << "\n";
+        file << col << ": ";
+        for(int row = 0; row < (int)list[col].size(); row++)
+        {
+            file << " " << list[col][row];
+        }
+    }
 }
 
 vector < vector < int > > Adjency_list::get_list() const

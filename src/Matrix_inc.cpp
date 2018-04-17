@@ -84,7 +84,7 @@ void Matrix_inc::print_matrix_inc()
             cout << matrix[col][row] << "\t";
         }
     }
-    cout << '\n';
+    cout << std::endl << std::endl;
 }
 
 void Matrix_inc::save_to_file_matrix_inc()

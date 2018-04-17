@@ -68,7 +68,28 @@ void Matrix_adj::print_matrix_adj()
             cout << matrix[col][row] << " ";
         }
     }
-    cout << '\n';
+    cout << std::endl << std::endl;
+}
+
+void Matrix_adj::save_to_file_matrix_adj()
+{
+    fstream file;
+    file.open("matrix_adj.txt", std::ios::out);
+    file << "A\n";
+    file << "   ";
+    for(int col = 0; col < (int)matrix[0].size(); col++)
+        file << col << " ";
+    for(int col = 0; col < (int)matrix.size(); col++)
+    {
+        file << "\n";
+        file << col << ": ";
+        for(int row = 0; row < (int)matrix[col].size(); row++)
+        {
+            file << matrix[col][row];
+            if(row < (int)matrix[col].size() - 1)
+                file << " ";
+        }
+    }
 }
 
 vector < vector < int > > Matrix_adj::get_matrix() const
